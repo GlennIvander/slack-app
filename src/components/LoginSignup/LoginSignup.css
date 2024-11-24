@@ -1,0 +1,112 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.dota2{
+    width: 80px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    width: 400px;
+    background: rgb(216, 212, 212);
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.signup {
+    color: #F44336;
+    font-size: 48px;
+    font-weight: 500;
+}
+
+.inputs {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.input {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 300px;
+    height: 50px;
+    background: white;
+    border-radius: 10px;
+}
+
+.input img {
+    margin: 0px 30px;
+}
+
+.input input {
+    height: 50px;
+    width: 400px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #F44336;
+    font-size: 15px;
+}
+
+.forgot {
+    display: flex;    
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    color: #F44336;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.submit-container {
+    display: flex;
+    gap: 30px;
+    margin: 30px auto;
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 40px;
+    color: white;
+    background: #F44336;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.submit:hover{
+    background-color: #94251d;
+    color: white;
+}
+
+.red {
+    background: white;
+    color: #F44336;
+}
