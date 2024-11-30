@@ -1,0 +1,193 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+span {
+    display: inline-block;
+}
+
+.home {
+    width: 1000px;
+    margin: 20px auto;
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: sans-serif;
+    color: #111;
+}
+
+.nav {
+    background: black;
+    padding: 10px 20px;
+}
+
+.circle-red, .circle-orange, .circle-green {
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    margin-right: 4px;
+}
+
+.circle-red {
+    background: red;
+}
+
+.circle-orange {
+    background: orange;
+}
+
+.circle-green {
+    background: green;
+}
+
+.circle-online {
+    font-size: 0.8rem;
+    background: lightgreen;
+    color: black;
+    padding: 4px;
+    line-height: .8rem;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    height: 100%;
+}
+
+.left {
+   background: #8D3020; 
+   color: white;
+}
+
+.left h2 {
+    margin-top: 30px;
+    margin-bottom: 5px;
+    padding-left: 20px;
+}
+
+.left .me {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.left h3 {
+    padding-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.left li {
+    padding-left: 20px;
+    line-height: 1.7;
+    color: bbb;
+}
+
+.left li:hover {
+    background: black;
+    color: white;
+    cursor: pointer;
+}
+
+.left li.active {
+    background: #1364a3;
+    color: white;
+}
+
+.left li.unread {
+    font-weight: 700;
+    color: white;
+}
+
+.group-member-count {
+    font-size: 0.8rem;
+    background: #aaa;
+    color: black;
+    padding: 4px;
+    line-height: .8rem;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+.right header {
+    min-height: 64px;
+    border-bottom: 1px solid #ddd;
+    font-size: 1.1rem;
+    padding: .5rem 1.5rem;
+}
+
+.right .name {
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.right .info {
+    color: #666;
+}
+
+.right .message {
+    height:450px;
+}
+
+.right footer {
+    min-height: 80px;
+    padding: .5rem 1.5rem;
+}
+
+.message {
+    padding: .5rem 1.5rem;
+    overflow: auto;
+}
+
+.message-input {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    grid-gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.message-photo {
+    display: block;
+    max-width: 100%;
+    border-radius: 4px;
+}
+
+.message-object .name {
+    font-weight: 700;
+}
+
+.message-object .time {
+    font-size: .85rem;
+    color: #666;
+    margin-left: 5px;
+}
+
+.message-object .content {
+    margin: .15rem 0;
+    line-height: 1.2;
+}
+
+.right .input-wrapper {
+    border: 1px solid #666;
+    padding: 1rem 1rem;
+    font-size: 1.1rem;
+    border-radius: 4px;
+}
+
+.input-wrapper span{
+    font-size: 1.3rem;
+}
+
+.input-wrapper input {
+    border: none;
+    font-size: 1.1rem;
+    margin-left: .25rem;
+    padding-left: .75rem;
+    border-left: 1px solid #aaa;
+}
+
+.input-wrapper input:focus {
+    outline: none;
+}
