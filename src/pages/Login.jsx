@@ -94,11 +94,15 @@ function Login(props) {
             required
           />
         </div>
-        <div className="forgot">Forgot Password?</div>
+        <div className="forgot">
+          <span>Forgot Password?</span>
+        </div>
         <div className="submit-container">
           <button type="submit" className="submit">Log in</button>
         </div>
-        <div className="noaccount">No account?<span> Sign up</span></div>
+        <div className="noaccount">No account?
+          <span> Sign up</span>
+        </div>
       </form>
     </div>
   );

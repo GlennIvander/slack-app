@@ -15,6 +15,7 @@ span {
     overflow: hidden;
     font-family: sans-serif;
     color: #111;
+    border: 1px solid #666;
 }
 
 .nav {
@@ -128,46 +129,18 @@ span {
     color: #666;
 }
 
-.right .message {
+.input-style {
+    border: none;
+    background-color: transparent;
+}
+
+.right .sendMessage {
     height:450px;
 }
 
 .right footer {
     min-height: 80px;
     padding: .5rem 1.5rem;
-}
-
-.message {
-    padding: .5rem 1.5rem;
-    overflow: auto;
-}
-
-.message-input {
-    display: grid;
-    grid-template-columns: 40px 1fr;
-    grid-gap: 1rem;
-    margin-bottom: 1rem;
-}
-
-.message-photo {
-    display: block;
-    max-width: 100%;
-    border-radius: 4px;
-}
-
-.message-object .name {
-    font-weight: 700;
-}
-
-.message-object .time {
-    font-size: .85rem;
-    color: #666;
-    margin-left: 5px;
-}
-
-.message-object .content {
-    margin: .15rem 0;
-    line-height: 1.2;
 }
 
 .right .input-wrapper {
@@ -177,7 +150,7 @@ span {
     border-radius: 4px;
 }
 
-.input-wrapper span{
+.envelope{
     font-size: 1.3rem;
 }
 
@@ -187,8 +160,20 @@ span {
     margin-left: .25rem;
     padding-left: .75rem;
     border-left: 1px solid #aaa;
+    width: 530px;
 }
 
 .input-wrapper input:focus {
     outline: none;
+}
+
+.send {
+    margin-left: 5px;
+}
+
+.input-wrapper button {
+    border: none;
+    cursor: pointer;
+    font-size: 1.3rem;
+    background-color: transparent;
 }
