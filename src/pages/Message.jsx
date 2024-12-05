@@ -1,8 +1,9 @@
 import './Message.css';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useData } from "../context/DataProvider";
 import axios from 'axios';
 import { API_URL } from "../constants/Constants";
+import { useNavigate } from "react-router-dom";
 
 function Message(props) {
     const { onLogout } = props;
@@ -10,12 +11,14 @@ function Message(props) {
     const [receiver, setReceiver] = useState('');
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (!receiver) {
-            return alert("Please enter a receiver ID in the info @ field.");
+            return alert("Please enter valid receiver ID in the info @ field.");
         }
 
         if (!message.trim()) {
@@ -33,19 +36,47 @@ function Message(props) {
             const { data } = response;
 
             if (data.data) {
-                setMessages((prevMessages) => [...prevMessages, message]);
+                setMessages((prevMessages) => [...prevMessages, { body: message }]);
                 setMessage('');
-                alert("Successfully sent a message!");
-                return;
-            }
-
-            if (data.errors) {
-                console.log(data.errors);
+            } else if (data.errors) {
+                console.error(data.errors);
+                setError("Failed to send message.");
             }
         } catch (error) {
             console.error(error);
+            setError("An unexpected error occurred.");
         }
     };
+
+    const fetchMessages = async () => {
+        if (!receiver) return;
+
+        try {
+            const response = await axios.get(`${API_URL}/messages?receiver_id=${receiver}&receiver_class=User`, {
+                headers: userHeaders
+            });
+
+            const { data } = response;
+
+            if (data.data) {
+                setMessages(data.data);
+            } else if (data.errors) {
+                console.error(data.errors);
+                setError("Failed to fetch messages.");
+            }
+        } catch (error) {
+            console.error("Error fetching messages:", error);
+            setError("An unexpected error occurred.");
+        }
+    };
+
+    useEffect(() => {
+        fetchMessages();
+    }, [receiver]);
+
+    const dashboard = () => {
+        navigate('/dashboard');
+      }
 
     return (
         <div className="home">
@@ -56,7 +87,7 @@ function Message(props) {
             </div>
             <div className="main">
                 <div className="left">
-                    <h2>Glenn</h2>
+                    <h2 className="dashboard" onClick={dashboard}>Glenn</h2>
                     <div className="me">
                         <span className="circle-online"></span>Glenn Ivander
                     </div>
@@ -73,41 +104,40 @@ function Message(props) {
                     </ul>
                     <button className="logout" onClick={onLogout}>Logout</button>
                 </div>
-                <form onSubmit={handleSubmit}>
-                    <div className="right">
-                        <header>
-                            <span className="name">Mikee</span>
-                            <div className="info">
-                                @
-                                <input
-                                    type="number"
-                                    className="input-style"
-                                    value={receiver}
-                                    onChange={(event) => setReceiver(event.target.value)}
-                                />
-                            </div>
-                        </header>
-                        <div className="sendMessage">
-                            {messages.slice(0).reverse().map((msg, index) => (
-                                <div key={index} className="message">
-                                    {msg}
-                                </div>
-                            ))}
+                <div className="right">
+                    <header>
+                        <span className="name">Direct Messages</span>
+                        <div className="info">
+                            @
+                            <input
+                                type="number"
+                                className="input-style"
+                                value={receiver}
+                                onChange={(e) => setReceiver(e.target.value)}
+                            />
                         </div>
-                        <footer>
-                            <div className="input-wrapper">
-                                <span className="envelope">✉️</span>
-                                <input
-                                    type="text"
-                                    placeholder="Message"
-                                    value={message}
-                                    onChange={(event) => setMessage(event.target.value)}
-                                />
-                                <button className="send" type="submit">➤</button>
+                    </header>
+                    <div className="sendMessage">
+                        {error && <div className="error">{error}</div>}
+                        {messages.map((msg, index) => (
+                            <div key={index} className="message">
+                                {msg.body}
                             </div>
-                        </footer>
+                        ))}
                     </div>
-                </form>
+                    <footer>
+                        <form onSubmit={handleSubmit} className="input-wrapper">
+                            <span className="envelope">✉️</span>
+                            <input
+                                type="text"
+                                placeholder="Message"
+                                value={message}
+                                onChange={(e) => setMessage(e.target.value)}
+                            />
+                            <button className="send" type="submit">➤</button>
+                        </form>
+                    </footer>
+                </div>
             </div>
         </div>
     );

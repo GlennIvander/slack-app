@@ -67,6 +67,24 @@ span {
     margin-top: 30px;
     margin-bottom: 5px;
     padding-left: 20px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.left h2:before {
+    content: "";
+    position: absolute;
+    height: 5px;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    background: black;
+    border-radius: 50px;
+    transition: width 0.3s ease;
+}
+.left h2:hover:before {
+    width: 105%;
 }
 
 .left .me {
@@ -176,4 +194,38 @@ span {
     cursor: pointer;
     font-size: 1.3rem;
     background-color: transparent;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.sendMessage {
+    flex-grow: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.message {
+    display: inline-block;
+    padding: 10px;
+    background-color: #e8f5e9;
+    border: 1px solid #c8e6c9;
+    border-radius: 8px;
+    word-wrap: break-word;
+    margin-bottom: 0px;
+}
+
+footer {
+    border-top: 1px solid #ddd;
+    padding: 1rem;
+    background-color: #fff;
 }

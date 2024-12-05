@@ -40,7 +40,7 @@ function App() {
             path="/message"
             element={
               isAuthenticated ? (
-                <Message />
+                <Message onLogout={handleLogout} />
               ) : (
                 <Navigate to="/login" />
               )

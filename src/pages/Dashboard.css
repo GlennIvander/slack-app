@@ -112,6 +112,28 @@ span {
     margin-right: 5px;
 }
 
+.sendmessage {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.sendmessage:before {
+    content: "";
+    position: absolute;
+    height: 5px;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    background: black;
+    border-radius: 50px;
+    transition: width 0.3s ease;
+}
+
+.sendmessage:hover:before {
+    width: 105%;
+}
+
 .right header {
     min-height: 64px;
     border-bottom: 1px solid #ddd;
@@ -139,7 +161,6 @@ span {
 
 .message {
     padding: .5rem 1.5rem;
-    overflow: auto;
 }
 
 .message-input {
@@ -191,4 +212,10 @@ span {
 
 .input-wrapper input:focus {
     outline: none;
+}
+
+footer {
+    border-top: 1px solid #ddd;
+    padding: 1rem;
+    background-color: #fff;
 }

@@ -52,9 +52,9 @@ function Dashboard(props) {
             <li>#kapuso</li>
             <li>#kapatid</li>
           </ul>
-          <h3>Direct Messages</h3>
+          <h3 className="sendmessage" onClick={sendMessage}>Direct Messages</h3>
           <ul>
-            <li onClick={sendMessage}><span className="circle-online"></span>Mikee</li>
+            <li><span className="circle-online"></span>Mikee</li>
             <li><span className="group-member-count"></span>Princess, Barbie and 2 others</li>
           </ul>
           <button className="logout" onClick={onLogout}>Logout</button>
