@@ -52,9 +52,7 @@ function Message(props) {
         if (!receiver) return;
 
         try {
-            const response = await axios.get(`${API_URL}/messages?receiver_id=${receiver}&receiver_class=User`, {
-                headers: userHeaders
-            });
+            const response = await axios.get(`${API_URL}/messages?receiver_id=${receiver}&receiver_class=User`, {headers: userHeaders});
 
             const { data } = response;
 
@@ -78,6 +76,18 @@ function Message(props) {
         navigate('/dashboard');
       }
 
+    const addChannels = () => {
+        navigate('/addchannels');
+      }
+
+    const sendMessage = () => {
+        navigate('/message');
+      }
+
+      const joinedChannels = () => {
+        navigate('/joinedchannels');
+    };
+
     return (
         <div className="home">
             <div className="nav">
@@ -87,20 +97,21 @@ function Message(props) {
             </div>
             <div className="main">
                 <div className="left">
-                    <h2 className="dashboard" onClick={dashboard}>Glenn</h2>
+                    <h2 className="dashboard" onClick={dashboard}>Home</h2>
                     <div className="me">
-                        <span className="circle-online"></span>Glenn Ivander
+                        <span className="circle-online"></span>Me
                     </div>
-                    <h3>Channels</h3>
+                    <h3 className="joinedchannels" onClick={joinedChannels}>Channels</h3>
+                    <h5 className="channels" onClick={addChannels}>➕Add Channels</h5>
                     <ul>
                         <li>#kapamilya</li>
                         <li>#kapuso</li>
                         <li>#kapatid</li>
                     </ul>
-                    <h3>Direct Messages</h3>
+                    <h3 className="sendmessage" onClick={sendMessage}>Direct Messages</h3>
                     <ul>
                         <li><span className="circle-online"></span>Mikee</li>
-                        <li><span className="group-member-count"></span>Princess, Barbie and 2 others</li>
+                        <li><span className="group-member-count"></span>Victor, John and 2 others</li>
                     </ul>
                     <button className="logout" onClick={onLogout}>Logout</button>
                 </div>
@@ -112,6 +123,7 @@ function Message(props) {
                             <input
                                 type="number"
                                 className="input-style"
+                                placeholder="User ID"
                                 value={receiver}
                                 onChange={(e) => setReceiver(e.target.value)}
                             />

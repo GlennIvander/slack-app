@@ -4,6 +4,9 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import DataProvider from "./context/DataProvider";
 import Message from "./pages/Message";
+import AddChannels from "./pages/AddChannels";
+import JoinedChannels from "./pages/JoinedChannels";
+import ChannelMessages from "./pages/ChannelMessages";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -41,6 +44,36 @@ function App() {
             element={
               isAuthenticated ? (
                 <Message onLogout={handleLogout} />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
+          />
+          <Route
+            path="/addchannels"
+            element={
+              isAuthenticated ? (
+                <AddChannels onLogout={handleLogout} />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
+          />
+          <Route
+            path="/joinedchannels"
+            element={
+              isAuthenticated ? (
+                <JoinedChannels onLogout={handleLogout} />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
+          />
+          <Route
+            path="/joinedchannels/:channelId/messages"
+            element={
+              isAuthenticated ? (
+                <ChannelMessages onLogout={handleLogout} />
               ) : (
                 <Navigate to="/login" />
               )
